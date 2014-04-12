@@ -1,0 +1,83 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+
+h1 {
+	font-family: "Roboto", Helvetica Neue;
+	font-weight: 300;
+	text-align: center;
+}
+h1 span {
+	font-weight: 400;
+	font-size: 100px;
+}
+body {
+	margin-top: -20px !important;
+	background: #FAF2E8;
+	//background: #FF9540;
+}
+.appstore {
+	margin-top: 1.5em;
+}
+.bbg {
+	background-position: center 0px;
+	height: 100%;
+	background-image: url("../img/splash.jpg");
+	background-size: cover;
+	background-repeat: none;
+	border-bottom: 14px solid #009B95;
+}
+.content {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+.call {
+	border-radius: 2px;
+	display: inline-block;
+	background: #F2A363;
+	color: #F7EADF;
+	font-size: 26px;
+	padding: 20px 30px;
+}
+.call:hover {
+	cursor: pointer;
+	background: #F57916;
+	color: #FFF;
+}
+.card {
+	padding: 10px;
+	font-size: 1.1em;
+	line-height: 1.28em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 40px;
+}
+.jackin {
+	margin-top: -40px;
+	margin-bottom: -90px;
+}
+.jacker {
+	position: relative;
+	text-align: center;
+  animation:jackinit .3s infinite;
+  -webkit-animation:jackinit .3s infinite;
+}
+
+@keyframes jackinit {
+  0%   {top: 0px;}
+  50%  {top: -80px;}
+  100% {top: 0px;}
+}
+
+@-webkit-keyframes jackinit {
+  0%   {top: 0px;}
+  50%  {top: -80px;}
+  100% {top: 0px;}
+}
+
+.footer {
+	margin-top: -50px;
+	font-size: 0.8em;
+	padding: 15px 10px;
+	text-align: center;
+	border-bottom: 14px solid #FAA096;
+}

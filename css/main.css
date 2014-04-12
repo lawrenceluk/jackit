@@ -120,6 +120,18 @@ body {
 	cursor: default !important;
 	text-decoration: none !important;
 }
+.searchbox {
+	border-radius: 2px;
+	border: 1px solid #EEE;
+	background: #F8F8F8;
+	font-weight: 300;
+	box-shadow: 0px 3px 3px #EFEFEF inset;
+	text-align: center;
+	margin-top: -10px;
+	font-size: 1.6em;
+	height: 40px;
+	width: 280px;
+}
 
 
 

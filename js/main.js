@@ -24,11 +24,13 @@ function getPlayer(name) {
 	var scores = [];
 	var query = new Parse.Query(Game);
 	query.equalTo("p1", name);
-	query.limit(5);
+	query.limit(10);
+	query.descending("createdAt");
+	$("#leaderboard").html("Loading...");
 	query.find({
 	  success: function(results) {
-	    for (var i = 0; i < results.length; i++) { 
-	      scores.push(results[i].p1score);
+	    for (var i = 0; i < results.length; i++) {
+	    	scores.push(results[i].attributes);
 	    }
 	  },
 	  error: function(error) {
@@ -36,26 +38,51 @@ function getPlayer(name) {
 	  }
 	});
 	query = new Parse.Query(Game);
-	query.limit(5);
+	query.limit(10);
 	query.equalTo("p2", name);
+	query.descending("createdAt");
 	query.find({
 	  success: function(results) {
 	    for (var i = 0; i < results.length; i++) { 
-	      scores.push(results[i].p2score);
+	      scores.push(results[i].attributes);
+	    }
+	    if (scores.length == 0) {
+	    	$("#leaderboard").html("Player not found.");
+	    	return;
+	    }
+	    scores.sort(compareTime);
+	  	$("#leaderboard").html("");
+	    for (var i = 0; i < scores.length; i++) {
+	  		var str = "<tr>";
+	  		str += "<td>"+(i+1)+"</td>";
+	    	var rr = scores[i];
+	    	if (rr.p1score < rr.p2score)
+	      	str += "<td class='fade'>"+rr.p1+"</td>";
+	      else str += "<td>"+rr.p1+"</td>";
+	      if (rr.p1score > rr.p2score)
+	      	str += "<td class='winscore'>"+rr.p1score+"</td>";
+	      else str += "<td class='fade'>"+rr.p1score+"</td>";
+	    	if (rr.p2score < rr.p1score)
+	      	str += "<td class='fade'>"+rr.p2+"</td>";
+	      else str += "<td>"+rr.p2+"</td>";
+	      if (rr.p2score > rr.p1score)
+	      	str += "<td class='winscore'>"+rr.p2score+"</td>";
+	      else str += "<td class='fade'>"+rr.p2score+"</td>";
+	    	str += "</tr>"
+	    	$("#leaderboard").append(str);
 	    }
 	  },
 	  error: function(error) {
 	    alert("Error: " + error.code + " " + error.message);
 	  }
 	});
-	return scores;
 }
 
 function getRecentGames() {
 	$("#leaderboard").html("Loading...");
 	var query = new Parse.Query(Game);
 	query.descending("createdAt");
-	query.limit(25);
+	query.limit(20);
 	query.find({
 	  success: function(results) {
 	  	$("#leaderboard").html("");
@@ -148,6 +175,13 @@ function compare(a,b) {
     return -1;
   return 0;
 }
+function compareTime(a, b) {
+	if (a.createdAt < b.createdAt)
+		return 1;
+	if (a.createdAt > b.createdAt)
+		return -1;
+	return 0;
+}
 
 
 function rand(min,max)
@@ -155,10 +189,12 @@ function rand(min,max)
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-getRecentGames();
+//getRecentGames();
 
 var $top = $("#top");
 var search = $("#search");
+var box = $("#searchbox");
+box.hide();
 var recent = $("#recent");
 
 recent.click(function () {
@@ -167,6 +203,7 @@ recent.click(function () {
 	$top.removeClass("select");
 	search.removeClass("select");
 	recent.addClass("select");
+	box.hide();
 	getRecentGames();
 });
 
@@ -176,5 +213,24 @@ $top.click(function() {
 	$top.addClass("select");
 	search.removeClass("select");
 	recent.removeClass("select");
+	box.hide();
 	getTopGames();
 });
+
+search.click(function() {
+	if (search.hasClass("select"))
+		return;
+	$top.removeClass("select");
+	search.addClass("select");
+	recent.removeClass("select");
+	box.show();
+});
+
+box.keypress(function (e) {
+  if (e.which == 13) {
+  	e.preventDefault();
+    getPlayer(box.val());
+  }
+});
+
+getRecentGames();

@@ -34,8 +34,8 @@ function getPlayer(name) {
 	    }
 	  },
 	  error: function(error) {
-	    alert("Error: " + error.code + " " + error.message);
-	  }
+	    console.log("Error: " + error.code + " " + error.message);
+	    $("#leaderboard").html("Error loading leaderboard.");	  }
 	});
 	query = new Parse.Query(Game);
 	query.limit(10);
@@ -73,7 +73,8 @@ function getPlayer(name) {
 	    }
 	  },
 	  error: function(error) {
-	    alert("Error: " + error.code + " " + error.message);
+	    console.log("Error: " + error.code + " " + error.message);
+	    $("#leaderboard").html("Error loading leaderboard.");
 	  }
 	});
 }
@@ -107,7 +108,8 @@ function getRecentGames() {
 	    }
 	  },
 	  error: function(error) {
-	    alert("Error: " + error.code + " " + error.message);
+	    console.log("Error: " + error.code + " " + error.message);
+	    $("#leaderboard").html("Error loading leaderboard.");
 	  }
 	});
 }
@@ -129,7 +131,8 @@ function getTopGames() {
 			}
 		},
 		error: function(error) {
-	    alert("Error: " + error.code + " " + error.message);
+	    console.log("Error: " + error.code + " " + error.message);
+	    $("#leaderboard").html("Error loading leaderboard.");
 	  }
 	});
 	query = new Parse.Query(Game);
@@ -163,8 +166,8 @@ function getTopGames() {
 			}
 		},
 		error: function(error) {
-	    alert("Error: " + error.code + " " + error.message);
-	  }
+	    console.log("Error: " + error.code + " " + error.message);
+	    $("#leaderboard").html("Error loading leaderboard.");	  }
 	});
 }
 

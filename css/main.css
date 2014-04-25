@@ -50,12 +50,21 @@ body {
 	color: #FFF;
 }
 .card {
+	color: #f9eee5;
 	padding: 10px;
 	font-size: 1.1em;
 	line-height: 1.28em;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 40px;
+}
+.columns h1 {
+	color: #FFF;
+}
+.split-description {
+	padding-top: 19px;
+	background: #F2A363;
+	border-bottom: 14px solid #F57916;
 }
 .jackin {
 	margin-top: -40px;
@@ -88,7 +97,6 @@ body {
 }
 .leaderboard {
 	padding-top: 20px;
-	border-top: 14px solid #F57916;
 	text-align: center;
 }
 .leaderboard table {

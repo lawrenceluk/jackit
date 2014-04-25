@@ -19,7 +19,7 @@ function addRow() {
 	    console.log("error: "+error);
 	  }
 	});
-} */
+} */ 
 
 function getPlayer(name) {
 	var scores = [];
@@ -235,82 +235,3 @@ box.keypress(function (e) {
 });
 
 getRecentGames();
-/*
-var seekurl = "http://jacbaciatge.herokuapp.com/seek/";
-var checkurl = "http://jacbaciatge.herokuapp.com/check/";
-var finishedurl = "http://jacbaciatge.herokuapp.com/finished/";
-var postgameurl = "http://jacbaciatge.herokuapp.com/postgame/";
-var inturl = "http://jacbaciatge.herokuapp.com/interrupt/";
-
-function createCORSRequest(method, url) {
-  var xhr = new XMLHttpRequest();
-  if ("withCredentials" in xhr) {
-    xhr.open(method, url, true);
-  } else if (typeof XDomainRequest != "undefined") {
-    xhr = new XDomainRequest();
-    xhr.open(method, url);
-  } else {
-    xhr = null;
-  }
-  return xhr;
-}
-function finisher() {
-	console.log("submitting finish");
-	var xhr = createCORSRequest('POST', finishedurl+"/"+box.val()+"/"+(rand(500, 3000)));
-	xhr.send();
-	xhr.onload = function() {
-		setTimeout(runPostgame, 500);
-	};
-	xhr.onerror = function() {
-	  console.log('There was an error!');
-	};	
-}
-function runPostgame() {
-	var xhr = createCORSRequest('GET', postgameurl+"/"+box.val());
-	xhr.send();
-	xhr.onload = function() {
-	var responseText = xhr.responseText;
-	console.log(responseText);
-	if (responseText == "wait" || responseText == "cancel")
-		setTimeout(runPostgame, rand(2000, 5000));
-	};
-	setTimeout(starter, rand(1000, 3000));
-	xhr.onerror = function() {
-	  console.log('There was an error!');
-	};	
-}
-function runCheck() {
-	var xhr = createCORSRequest('GET', checkurl+"/"+box.val());
-	xhr.send();
-	xhr.onload = function() {
-	var responseText = xhr.responseText;
-	console.log(responseText);
-	if (responseText == "no")
-		setTimeout(runCheck, 500);
-	else setTimeout(finisher, 2000);
-	};
-	xhr.onerror = function() {
-	  console.log('There was an error!');
-	};	
-}
-// seek
-$("#killem").click(starter);
-
-function starter() {
-	var xhr = createCORSRequest('POST', seekurl+"/"+box.val());
-	xhr.send();
-	xhr.onload = function() {
-		var responseText = xhr.responseText;
-		console.log(responseText);
-		setTimeout(runCheck, 500);
-	};
-	xhr.onerror = function() {
-	  console.log('There was an error!');
-	};
-}
-
-function sleep(millis, callback) {
-    setTimeout(function()
-            { callback(); }
-    , millis);
-} */

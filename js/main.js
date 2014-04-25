@@ -89,7 +89,7 @@ function getRecentGames() {
 	  	$("#leaderboard").html("");
 	    for (var i = 0; i < results.length; i++) {
 	  		var str = "<tr>";
-	  		str += "<td>"+(i+1)+"</td>";
+	  		str += "<td>"+(results[i].createdAt.toUTCString().split(" ")[4])+"</td>";
 	    	var rr = results[i].attributes;
 	    	if (rr.p1score < rr.p2score)
 	      	str += "<td class='fade'>"+rr.p1+"</td>";

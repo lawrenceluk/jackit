@@ -275,4 +275,8 @@ input {
 .sub:hover {
 	background: #E0796E;
 }
+.hashtag {
+	color: #555;
+	margin-top: 6px;
+}
 

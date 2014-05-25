@@ -246,3 +246,33 @@ blockquote span {
 	float: right;
 }
 
+#mc_embed_signup {
+	margin-top: 150px;
+	display: inline-block;
+	background: rgba(255, 255, 255, 0.4);
+	padding: 15px;
+	border-radius: 2px;
+}
+
+label {
+	font-family: "Roboto", Helvetica Neue;
+	font-size: 1.6em;
+	display: block;
+}
+input {
+	margin-top: 12px;
+	width: 100%;
+	height: 45px;
+	padding: 12px;
+	font-size: 1.3em;
+}
+.sub {
+	border: none;
+	background: #FAA096;
+	color: #F7EADF;
+	font-size: 20px;
+}
+.sub:hover {
+	background: #E0796E;
+}
+

@@ -1,3 +1,7 @@
+$("#bigbutton").click(function() {
+	$('#mce-EMAIL').focus();
+});
+
 Parse.initialize("9iFBOZbXNasx6wr4NnSlDSeAEZ4BiiKQg1gHCYOn", "1kFVBhQOySICQbvslZqu0YyQdm4QMfN8OLPNABYy");    
 var Game = Parse.Object.extend("Game");
 var names = ["Josh", "Ankush", "Aieswarya", "Angelique", "Elle", "Lawrence", "Long", "Michelle"];
